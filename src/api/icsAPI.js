@@ -1,17 +1,21 @@
-import { CommitSharp } from "@mui/icons-material";
-import ics from "../utils/ics.deps.min";
+
+const ics = require('ics');
 
 const addMinutes = (date, minutes) => {
     return new Date(date.getTime() + minutes*60000);
 }
 
-const makelogs = (obj) => {
-    console.log('Events Array');
-    console.log('=================');
-    console.log(obj.events());
-    console.log('Calendar With Header');
-    console.log('=================');
-    console.log(obj.calendar());
+
+
+const downloadFile = (text) => {
+    const element = document.createElement('a');
+    const file = new Blob([text], {
+        type: "text/plain;charset=utf-8"
+    ,});
+    element.href = URL.createObjectURL(file);
+    element.download = "ntucal.ics"
+    document.body.appendChild(element);
+    element.click();
 }
 
 export const stringFormat = (raw, course, cur_meet) => {
@@ -34,9 +38,9 @@ export const stringFormat = (raw, course, cur_meet) => {
 
 const icsAPI = (courseList, startDate, format = '[!{course_code}] !{meeting_type} (!{course_name})', recessBeforeWeek = 7) => {
     //startDate = date object of monday of the first week
+    let events = [];
     let start_date = new Date(startDate.toDateString()); //removes time component
 
-    var cal = ics();
 
     for(let index = 0; index < courseList.length; index++){
 
@@ -67,16 +71,25 @@ const icsAPI = (courseList, startDate, format = '[!{course_code}] !{meeting_type
                     preRecess = false;
                     continue;
                 }
-
-                cal.addEvent(subject, '', cur_meet.venue, date_start, date_end);
+                events.push({
+                    title: subject,
+                    location: cur_meet.venue,
+                    start: [date_start.getFullYear(), date_start.getUTCMonth()+1, date_start.getUTCDate(), date_start.getUTCHours(), date_start.getUTCMinutes()],
+                    startInputType: 'utc',
+                    startOutputType: 'utc',
+                    end: [date_end.getFullYear(), date_end.getUTCMonth()+1, date_end.getUTCDate(), date_end.getUTCHours(), date_end.getUTCMinutes()],
+                    endInputType: 'utc',
+                    endOutputType: 'utc',
+                })
             }
             
         }
     }
-
+    const {error, value} = ics.createEvents(events);
     //makelogs(cal);
-    cal.download('Schedule')
-
+    if(error) console.log(error);
+    console.log(value);
+    downloadFile(value);
 }
 
 export default icsAPI;
