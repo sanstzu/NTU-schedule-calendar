@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Introduction
+I remembered the days where I have to suffer by manually inputting the course schedule into my calendar app. To save up few hours of my life (and yours), I created this repository. This website in this repository allows the user to export their course schedule into an iCalendar file (which can be imported to most calendar applications). The website uses React and MaterialUI for the front-end, and `npm ics` to generate the calendar file.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to use it
+There are two ways to input your course schedule, as well as the ability to modify it.
 
-## Available Scripts
+### Manual Input
+You can manually type the course and index into the inputs of the first table.
+<br>
+<img src="https://user-images.githubusercontent.com/26087840/223480914-42a8e962-9fe8-41fc-a3bf-de86eb804bc2.png" width="720">
 
-In the project directory, you can run:
 
-### `npm start`
+Simply enter the course code or the course name into the first input and the suggestions will appear from the collected data.
+<img src="https://user-images.githubusercontent.com/26087840/223481445-a27e47a4-db0f-41a0-aec6-7f0e287c392c.png" width="360">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Your desired module does not appear? You can add your own customized module by inserting manually as well (if you are a masochist),
+<img src="https://user-images.githubusercontent.com/26087840/223482311-a6f7b410-ab73-470b-b88b-f79df7a2fd8c.png" width="360">
 
-### `npm test`
+or you can import from your Course Timetable by copying the row(s) of the subject you wanted to import
+<img src="https://user-images.githubusercontent.com/26087840/223486298-2e8c17f7-f8eb-4afe-880c-cb3f58c07e56.png" width="720">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Quick Input
+Simply select everything (Ctrl+A or cmd+A) from your timetable, paste into the 'PASTE SCHEDULE', and voila! All ready in a single click.
+<img src="https://user-images.githubusercontent.com/26087840/223489475-afbf28eb-4fdd-4053-ad1c-09e8b8c0be5c.png" width="480">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Text formatting
+Dislike the default format of the calendar title? You can create your own with the available variables (listed on the website).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Suggestions
+If you have any suggestions or input, feel free to contact me through Discord (`one and only#0624`) or [my email](mailto:claytonfernalo@gmail.com).
