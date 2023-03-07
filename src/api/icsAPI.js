@@ -37,7 +37,7 @@ export const stringFormat = (raw, course, cur_meet) => {
     return result;
 }
 
-const icsAPI = (courseList, startDate, format = default_format, recessBeforeWeek = 7) => {
+const icsAPI = (courseList, startDate, format = default_format, recessBeforeWeek = 8) => {
     //startDate = date object of monday of the first week
     let events = [];
     let start_date = new Date(startDate.toDateString()); //removes time component
