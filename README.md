@@ -1,33 +1,47 @@
 # Introduction
-I remembered the days where I have to suffer by manually inputting the course schedule into my calendar app. To save up few hours of my life (and yours), I created this repository. This website in this repository allows the user to export their course schedule into an iCalendar file (which can be imported to most calendar applications). The website uses React and MaterialUI for the front-end, and `npm ics` to generate the calendar file.
+I remembered the days where I have to suffer by manually inputting the course schedule into my calendar app. To save up few hours of my life (and yours), I created this repository. This website in this repository allows the user to export their course schedule into an iCalendar file (which can be imported to most calendar applications).
+
+- Front-end: [React](https://reactjs.org/), [MaterialUI](https://mui.com/)
+- iCalendar Generator: [ics](https://github.com/adamgibbons/ics)
 
 ## How to use it
 There are two ways to input your course schedule, as well as the ability to modify it.
 
 ### Manual Input
+
 You can manually type the course and index into the inputs of the first table.
-<br>
+
 <img src="https://user-images.githubusercontent.com/26087840/223480914-42a8e962-9fe8-41fc-a3bf-de86eb804bc2.png" width="720">
 
-
 Simply enter the course code or the course name into the first input and the suggestions will appear from the collected data.
+
 <img src="https://user-images.githubusercontent.com/26087840/223481445-a27e47a4-db0f-41a0-aec6-7f0e287c392c.png" width="360">
 
-
 Your desired module does not appear? You can add your own customized module by inserting manually as well (if you are a masochist),
+
 <img src="https://user-images.githubusercontent.com/26087840/223482311-a6f7b410-ab73-470b-b88b-f79df7a2fd8c.png" width="360">
 
 or you can import from your Course Timetable by copying the row(s) of the subject you wanted to import
+
 <img src="https://user-images.githubusercontent.com/26087840/223486298-2e8c17f7-f8eb-4afe-880c-cb3f58c07e56.png" width="720">
 
 
 ### Quick Input
+
 Simply select everything (Ctrl+A or cmd+A) from your timetable, paste into the 'PASTE SCHEDULE', and voila! All ready in a single click.
+
 <img src="https://user-images.githubusercontent.com/26087840/223489475-afbf28eb-4fdd-4053-ad1c-09e8b8c0be5c.png" width="480">
 
 
 ### Text formatting
+
 Dislike the default format of the calendar title? You can create your own with the available variables (listed on the website).
 
+<img src="https://user-images.githubusercontent.com/26087840/223490009-e047089d-5825-4704-80d2-3c679b1058c3.png" width="480">
+
+
+
 # Suggestions
-If you have any suggestions or input, feel free to contact me through Discord (`one and only#0624`) or [my email](mailto:claytonfernalo@gmail.com).
+If you have any suggestions or input, feel free to contact me through Discord (`one and only#0624`) or [my email](mailto:claytonfernalo@gmail.com).&nbsp;
+
+<img src="https://media.tenor.com/591bCuq_tyMAAAAC/bocchi-bocchitherock.gif" width="360">
