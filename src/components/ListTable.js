@@ -213,18 +213,7 @@ const ListTable = (props) => {
                 </Table>
             </TableContainer>
             <Box sx={{mb:10, display:'flex', flexDirection:'row', gap: 2}}>
-                <Button
-                    
-                    variant="outlined"
-                    fullWidth={true}
-                    disabled={rowSelection.length === 0}
-                    onClick={deleteSelected}
-                    startIcon={<DeleteIcon />}
-                    color="error"
-                >
-                    Delete Selected
-                </Button>
-                <Button
+            <Button
                     variant="outlined"
                     fullWidth={true}
                     onClick={()=>{
@@ -239,6 +228,18 @@ const ListTable = (props) => {
                 >
                     Paste Schedule
                 </Button>
+                <Button
+                    
+                    variant="outlined"
+                    fullWidth={true}
+                    disabled={rowSelection.length === 0}
+                    onClick={deleteSelected}
+                    startIcon={<DeleteIcon />}
+                    color="error"
+                >
+                    Delete Selected
+                </Button>
+                
             </Box>
             
         </>
