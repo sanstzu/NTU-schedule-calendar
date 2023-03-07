@@ -5,19 +5,21 @@ import { Button, Collapse, Box, TextField, Typography, Paper, List, ListItem, Ca
 import DownloadIcon from "@mui/icons-material/Download";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import InfoIcon from '@mui/icons-material/Info';
 
 import icsAPI from "../api/icsAPI";
 import { stringFormat } from '../api/icsAPI';
 import {start_date} from "../const/const"
 
-import { blue } from '@mui/material/colors';
+import { blue, grey } from '@mui/material/colors';
 
 import { example } from '../const/course_data';
 
+import { default_format } from '../const/const';
 
 
 const Export = (props) => {
-    const [format, setFormat] = React.useState('[!{course_code}] !{meeting_type} (!{course_name})')
+    const [format, setFormat] = React.useState(default_format)
     const [expanded, setExpanded] = React.useState(false);
 
     const toggleOption = () => {
@@ -71,12 +73,12 @@ const Export = (props) => {
                 
                 <TextField 
                     variant='standard'   
-                    label="Title Format"
+                    label={`Text Format`}
                     sx={{my:1}} 
                     onChange={(event)=>{
                         
                         if(event.target.value===''){
-                            setFormat('[!{course_code}] !{meeting_type} (!{course_name})');
+                            setFormat(default_format);
                         } else {
                             setFormat(event.target.value);
                         }
@@ -84,6 +86,13 @@ const Export = (props) => {
                     fullWidth
                 />
                 <Typography>Preview: {stringFormat(format, example, example.index.meetings[0])}</Typography>
+                <Box sx={{ display:'flex', flexDirection: 'row', alignItems:'center', justifyContent:'start' }}>
+                    <InfoIcon sx={{mr:0.5, position: 'relative', top: '1px'}} fontSize='small' color='action' />
+                    <Typography sx={{color: grey[600], fontSize:14}}>
+                        {`The default format is `}
+                        <Typography component="span" sx={{fontFamily:'Courier'}}>{default_format}</Typography>
+                    </Typography>
+                </Box>
             </Collapse>
             <Button
                 sx={{mb:1}}

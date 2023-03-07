@@ -1,3 +1,4 @@
+import { default_format } from '../const/const';
 
 const ics = require('ics');
 
@@ -36,7 +37,7 @@ export const stringFormat = (raw, course, cur_meet) => {
     return result;
 }
 
-const icsAPI = (courseList, startDate, format = '[!{course_code}] !{meeting_type} (!{course_name})', recessBeforeWeek = 7) => {
+const icsAPI = (courseList, startDate, format = default_format, recessBeforeWeek = 7) => {
     //startDate = date object of monday of the first week
     let events = [];
     let start_date = new Date(startDate.toDateString()); //removes time component
