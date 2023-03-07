@@ -46,7 +46,7 @@ const ScheduleParser = (raw) => {
     }
 
     var result = {isFull: true, courses:[]}
-    var cur_course = emptycourse;
+    var cur_course = JSON.parse(JSON.stringify(emptycourse));
     var first = true;
 
     for(let i = 0; i<full_check.length && result.isFull; i++){
@@ -61,11 +61,11 @@ const ScheduleParser = (raw) => {
     var temp_index = {};
     var ptr = 0;
     var isPartOfPrevious = false;
-    console.log(text);
     for (let i = 0; i<text.length; i++){
 
         let row = text[i];
         if(row==='') {
+            if(!result.isFull) return null;
             result.courses.push(JSON.parse(JSON.stringify(cur_course)));
             break;
         }
@@ -104,9 +104,12 @@ const ScheduleParser = (raw) => {
             })
             */
         } else if(temp.length === 15) {
-            if(!first) result.courses.push(JSON.parse(JSON.stringify(cur_course)));
-            else first = false;
-            cur_course = emptycourse;
+            if(!first) {
+                if(!result.isFull) break;
+                result.courses.push(JSON.parse(JSON.stringify(cur_course)));
+            } else first = false;
+
+            cur_course = JSON.parse(JSON.stringify(emptycourse));
             cur_course.index.meetings = [];
 
             cur_course.course.code = temp[0];
@@ -134,6 +137,7 @@ const ScheduleParser = (raw) => {
         }
     }
 
+    if(!result.isFull) result.courses.push(JSON.parse(JSON.stringify(cur_course)));
     return result;
 }
 
