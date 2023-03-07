@@ -23,7 +23,7 @@ Your desired module does not appear? You can add your own customized module by i
 
 or you can import from your Course Timetable by copying the row(s) of the subject you wanted to import
 
-<img src="https://user-images.githubusercontent.com/26087840/223486298-2e8c17f7-f8eb-4afe-880c-cb3f58c07e56.png" width="720">
+<img src="https://user-images.githubusercontent.com/26087840/223493991-57d04138-dcff-42ce-9c6c-43a0683f295f.png" width="720">
 
 
 ### Quick Input
