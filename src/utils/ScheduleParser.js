@@ -1,10 +1,6 @@
 import DayParser from "./DayParser";
 import WeekParser from "./WeekParser";
 
-const invalidValue = () => {
-    return null;
-}
-
 const ScheduleParser = (raw) => {
     /*
     Infos:
@@ -18,6 +14,7 @@ const ScheduleParser = (raw) => {
             courses: [an array full coursre index object]
         }
     */
+    if(raw==='' || raw===null || raw===undefined) return {isFull: false, courses:null};
     var text = raw.split('\n');
     const full_check = [
         'NTU Logo',
@@ -58,14 +55,12 @@ const ScheduleParser = (raw) => {
     if(result.isFull) text = text.slice(12);
 
     var temp = [];
-    var temp_index = {};
-    var ptr = 0;
     var isPartOfPrevious = false;
     for (let i = 0; i<text.length; i++){
 
         let row = text[i];
         if(row==='') {
-            if(!result.isFull) return null;
+            if(!result.isFull) return {isFull: false, courses:null};
             result.courses.push(JSON.parse(JSON.stringify(cur_course)));
             break;
         }
@@ -94,7 +89,7 @@ const ScheduleParser = (raw) => {
             cur_index.weeks = WeekParser(temp[5]);
 
             if(!cur_course.index.meetings.length) {
-                return null;
+                return {isFull: false, courses:null};
             }
             cur_course.index.meetings.push(cur_index);
             temp = [];
@@ -133,7 +128,7 @@ const ScheduleParser = (raw) => {
 
 
         } else {
-            return null;
+            return {isFull: false, courses:null};
         }
     }
 
