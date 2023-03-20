@@ -7,15 +7,11 @@ import IconButton from '@mui/material/IconButton';
 
 function SimpleDialog(props) {
     const { onClose, open, children } = props;
-  
-    const handleClose = () => {
-        onClose(false)
-    };
     
     return (
-        <Dialog onClose={handleClose} open={open} maxWidth='xl'>
+        <Dialog onClose={onClose} open={open} maxWidth='xl'>
             <Box sx={{display: 'flex', flexDirection: 'row-reverse'}}>
-                <IconButton size='large' onClick={handleClose}><CloseIcon /></IconButton>
+                <IconButton size='large' onClick={onClose}><CloseIcon /></IconButton>
             </Box>
             {children}
         </Dialog>

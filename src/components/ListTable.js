@@ -21,14 +21,12 @@ import course_data from '../const/course_data';
 import { start_date } from '../const/const';
 import icsAPI from '../api/icsAPI';
 
+import { Context, COURSELIST, EDITOR, PARSE } from '../context/provider';
+
 const MAX_SUGGESTION = 5;
 
-function createData(courseCode, courseName, index) {
-    return {courseCode, courseName, index}    
-} 
-
 const course_data_lite = course_data.map((element, index) =>['id', 'code', 'name'].reduce((result, key) => { 
-    if(key == 'id'){
+    if(key === 'id'){
         result[key] = index;
     } else {
         result[key] = element[key]; 
@@ -42,7 +40,9 @@ const ListTable = (props) => {
     const [courseCode, setCourseCode] = React.useState(null);
     const [courseIndex, setCourseIndex] = React.useState(null);
     const [inputKey, setInputKey] = React.useState(true);
-    const [rowSelection, setRowSelection] = React.useState([])
+    const [rowSelection, setRowSelection] = React.useState([]);
+
+    const [state, dispatch] = React.useContext(Context);
 
     const resetCourse = () => {
         setInputKey(!inputKey)
@@ -54,7 +54,7 @@ const ListTable = (props) => {
     }
 
     const addValue = () => {
-        props.push({"course": courseCode, "index": courseIndex})
+        dispatch({type: COURSELIST.PUSH, course:{"course": courseCode, "index": courseIndex}})
         resetCourse();
         resetIndex();
     }
@@ -72,15 +72,16 @@ const ListTable = (props) => {
 
     const deleteSelected = (value) => {
 
-        props.popSelect(rowSelection)
+        dispatch({type:COURSELIST.POP_MULTIPLE, indexes: rowSelection});
         setRowSelection([])
     }
 
     const customCourseHandler = () => {
-        props.edit(-1)
+        dispatch({type: EDITOR.SET_INDEX, index: -1});
+        dispatch({type: EDITOR.OPEN_WINDOW});
     }
 
-
+    /*pop={props.pop} */
     return(
         <>
             <TableContainer component={Paper} sx={{mb:2}}>
@@ -98,8 +99,9 @@ const ListTable = (props) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {props.courseList.map((element, index) => (
-                            <ListTableRow element={element} key={index} index={index} pop={props.pop} edit={props.edit} popSelection={removeSelection} addSelection={addSelection} />
+                        {state.courseList.map((element, index) => (
+                            
+                            <ListTableRow element={element} key={index} index={index} edit={props.edit} popSelection={removeSelection} addSelection={addSelection} />
                             
                         ))}
                         <TableRow
@@ -161,7 +163,7 @@ const ListTable = (props) => {
                                         
                                         inputProps={{
                                             ...params.inputProps,
-                                            autoComplete: 'new-password', // disable autocomplete and autofill
+                                            autoComplete: 'new-password',
                                         }}
                                         />
                                     )}
@@ -184,7 +186,7 @@ const ListTable = (props) => {
                                         
                                         inputProps={{
                                             ...params.inputProps,
-                                            autoComplete: 'new-password', // disable autocomplete and autofill
+                                            autoComplete: 'new-password',
                                         }}
                                         />
                                     )}
@@ -217,12 +219,17 @@ const ListTable = (props) => {
                     variant="outlined"
                     fullWidth={true}
                     onClick={()=>{
-                        props.parseCallback(() => (res) =>{
-                            if(res.isFull) props.setCourseList(res.courses);
-                            props.parseDetails('');
-                        })
-                        props.parseDetails('Degree Audit > View Course timetable > Select all (Ctrl+A or cmd+A), copy and paste here');
-                        props.openParse();
+                        dispatch({type: PARSE.SET_CALLBACK, callback:((res) =>{
+                            if(res.isFull) {
+                                dispatch({type: COURSELIST.RESET})
+                                res.courses.forEach((element)=>{
+                                    dispatch({type:COURSELIST.PUSH, course:element})
+                                })
+                            }
+                            dispatch({type: PARSE.SET_TEXT, text:''});
+                        })})
+                        dispatch({type: PARSE.SET_TEXT, text:'Degree Audit > View Course timetable > Select all (Ctrl+A or cmd+A), copy and paste here'});
+                        dispatch({type: PARSE.OPEN_WINDOW})
                     }}
                     startIcon={<ContentPasteIcon />}
                 >

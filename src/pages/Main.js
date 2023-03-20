@@ -9,37 +9,11 @@ import CourseEditor from '../components/CourseEditor';
 import TextParser from '../components/TextParser';
 import Export from '../components/Export';
 
+import { Context, EDITOR, PARSE } from '../context/provider';
 
-function Main(){
-    const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
-    const [loaded, setLoaded] = React.useState(0);
-    const [courseList, setCourseList] = React.useState([])
-    const [customAddWindow, setCustomAddWindow] = React.useState(false)
-    const [parseWindow, setParseWindow] = React.useState(false)
-    const [parseOutput, setParseOutput] = React.useState(false)
-    const [parseCallback, setParseCallback] = React.useState();
-    const [parseDetailsText, setParseDetailsText] = React.useState('');
-    const [editorIndex, setEditorIndex] = React.useState(-1)
-
-    React.useEffect(() => {
-        window.addEventListener('resize', ()=>{
-            setWindowHeight(window.innerHeight);
-        })
-    },[])
-
-    const checkDuplicateCourseList = (course) => {
-        let d_index = -1
-        let cstring = JSON.stringify(course)
-        courseList.map((element, index) => {
-            if(cstring===JSON.stringify(element)) d_index = index;
-        })
-
-        return d_index;
-        
-    }
-
+/*
     const pushCourseList = (course) => {
-        if(checkDuplicateCourseList(course)==-1) setCourseList([...courseList, course])
+        if(checkDuplicateCourseList(course)===-1) setCourseList([...courseList, course])
     }
 
     const popCourseList = (index) => {
@@ -50,7 +24,7 @@ function Main(){
         })
         setCourseList(newList)
     }
-
+    
     const popSelectedCourseList = (arr) => {
         let newList = []
         courseList.map((element,key) => {
@@ -63,7 +37,31 @@ function Main(){
     const updateCourseList = (index, value) => {
         setCourseList([...(courseList.slice(0,index)), value, ...(courseList.slice(index+1))])
     }
+    */
 
+
+
+function Main(){
+    const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
+    //const [courseList, setCourseList] = React.useState([])
+    //const [customAddWindow, setCustomAddWindow] = React.useState(false)
+    const [parseWindow, setParseWindow] = React.useState(false)
+    const [parseCallback, setParseCallback] = React.useState();
+    const [parseDetailsText, setParseDetailsText] = React.useState('');
+    //const [editorIndex, setEditorIndex] = React.useState(-1);
+
+    const [state, dispatch] = React.useContext(Context);
+
+    React.useEffect(() => {
+        window.addEventListener('resize', ()=>{
+            setWindowHeight(window.innerHeight);
+        })
+    },[])
+
+
+
+    
+    /*
     const activateEditor = (index) => {
         setEditorIndex(index)
         setCustomAddWindow(true);
@@ -80,7 +78,7 @@ function Main(){
     const closeParse = () => {
         setParseWindow(false);
     }
-    
+    */
 
     return (
         <Box
@@ -118,21 +116,21 @@ function Main(){
             }}
         >
                 <SimpleDialog 
-                    onClose={setParseWindow}
-                    open={parseWindow}
+                    onClose={() => {dispatch({type: PARSE.CLOSE_WINDOW})}}
+                    open={state.parse.window}
                 >
                     <Box
                         sx={{
                             padding: 3
                         }}
                     >
-                        <TextParser parseResult={parseOutput} parseCallback={parseCallback} parseDetails={parseDetailsText} close={closeParse}/>
+                        <TextParser parseCallback={parseCallback} parseDetails={parseDetailsText} close={() => {dispatch({type: PARSE.CLOSE_WINDOW})}}/>
                     </Box>
                 </SimpleDialog>
 
                 <SimpleDialog 
-                    onClose={setCustomAddWindow}
-                    open={customAddWindow}
+                    onClose={() => {dispatch({type: EDITOR.CLOSE_WINDOW})}}
+                    open={state.editor.window}
                 >
                     <Box
                         sx={{
@@ -140,32 +138,12 @@ function Main(){
                         }}
                     >
                         <CourseEditor 
-                            openParse={activateParse} 
-                            parseResult={setParseOutput} 
-                            parseCallback={setParseCallback} 
-                            parseDetails={setParseDetailsText}
-                            selectedIndex={editorIndex} 
-                            courseList={courseList} 
-                            update={updateCourseList} 
-                            push={pushCourseList} 
-                            close={closeEditor}
+                            close={()=>{dispatch({type: EDITOR.CLOSE_WINDOW})}}
                         />
                     </Box>
                 </SimpleDialog>
-                <ListTable
-                    openParse={activateParse} 
-                    parseResult={setParseOutput} 
-                    parseCallback={setParseCallback}
-                    parseDetails={setParseDetailsText} 
-                    courseList={courseList} 
-                    setCourseList={setCourseList} 
-                    push={pushCourseList} 
-                    pop={popCourseList} 
-                    popSelect={popSelectedCourseList} 
-                    edit={activateEditor}
-                    
-                />
-                <Export courseList={courseList} />
+                <ListTable/>
+                <Export courseList={state.courseList} />
             </Box>
         </Box>
         
