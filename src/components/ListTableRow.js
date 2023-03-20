@@ -15,6 +15,7 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import EditIcon from '@mui/icons-material/Edit';
 import Box from '@mui/material/Box';
 
+import { Context, COURSELIST, EDITOR } from '../context/provider';
 
 function dayString(num){
     return ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][num]
@@ -36,6 +37,7 @@ function week_parser(weeks){
 }
 
 const ListTableRow = (props) => {
+    const [state, dispatch] = React.useContext(Context);
     const [dropdown, setDropdown] = React.useState(false)
     const toggleDropdown = () => setDropdown(!dropdown)
 
@@ -60,7 +62,10 @@ const ListTableRow = (props) => {
                 <TableCell align="left" onClick={toggleDropdown}>{props.element.index.index}</TableCell>
                 <TableCell  >
                     <Box sx={{display:'flex', flexDirection:'row'}}>
-                        <IconButton aria-label="delete" size="small" onClick={() => props.edit(props.index)}>
+                        <IconButton aria-label="delete" size="small" onClick={() => {
+                            dispatch({ type: EDITOR.SET_INDEX, index: props.index })
+                            dispatch({ type: EDITOR.OPEN_WINDOW })
+                            }}>
                             {<EditIcon/>}
                         </IconButton>
                         <Checkbox

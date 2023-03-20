@@ -89,7 +89,6 @@ const icsAPI = (courseList, startDate, format = default_format, recessBeforeWeek
     const {error, value} = ics.createEvents(events);
     //makelogs(cal);
     if(error) console.log(error);
-    console.log(value);
     downloadFile(value);
 }
 
