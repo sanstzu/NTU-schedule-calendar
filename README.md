@@ -43,7 +43,7 @@ Dislike the default format of the calendar title? You can create your own with t
 
 
 # Suggestions
-If you have any suggestions or input, feel free to contact me through Discord (`one and only#0624`) or [my email](mailto:claytonfernalo@gmail.com).&nbsp;
+If you have any suggestions or input, feel free to contact me through [my email](mailto:claytonfernalo@gmail.com).&nbsp;
 
 <img src="https://media.tenor.com/591bCuq_tyMAAAAC/bocchi-bocchitherock.gif" width="360">
 
