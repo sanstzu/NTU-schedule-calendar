@@ -5,6 +5,8 @@ import { mainTheme } from './const/theme'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material';
 import Footer from './components/Footer'
+
+import { Analytics } from '@vercel/analytics/react';
 function App() {
   return (
     <>
@@ -14,6 +16,7 @@ function App() {
         <Main />
         <Footer />
       </ThemeProvider>
+      <Analytics />
     </>
     
     
