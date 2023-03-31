@@ -1,8 +1,9 @@
 # Introduction
-I remembered the days where I have to suffer by manually inputting the course schedule into my calendar app. To save up few hours of my life (and yours), I created this repository. This website in this repository allows the user to export their course schedule into an iCalendar file (which can be imported to most calendar applications).
+I remembered the days where I have to suffer by manually inputting the course schedule into my calendar app. To save up few hours of my life (and yours), I created this repository. This website in this repository allows the user to export their course schedule into an iCalendar file (which can be imported into most calendar applications).
 
 - Front-end: [React](https://reactjs.org/), [MaterialUI](https://mui.com/)
 - iCalendar Generator: [ics](https://github.com/adamgibbons/ics)
+- Webscrapping: [BeautifulSoup 4](https://www.crummy.com/software/BeautifulSoup/) (not pushed)
 
 ## How to use it
 There are two ways to input your course schedule, as well as the ability to modify it.
@@ -42,6 +43,10 @@ Dislike the default format of the calendar title? You can create your own with t
 
 
 # Suggestions
-If you have any suggestions or input, feel free to contact me through Discord (`one and only#0624`) or [my email](mailto:claytonfernalo@gmail.com).&nbsp;
+If you have any suggestions or input, feel free to contact me through [my email](mailto:claytonfernalo@gmail.com).&nbsp;
 
 <img src="https://media.tenor.com/591bCuq_tyMAAAAC/bocchi-bocchitherock.gif" width="360">
+
+# Changelogs
+- (03/20): Fixed prop drilling with the use of `useContext` and `useReducer`
+- (03/07): Initial Commit

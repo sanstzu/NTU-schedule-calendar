@@ -7,6 +7,7 @@ import SaveIcon from '@mui/icons-material/Save';
 
 import CourseEditorRow from './CourseEditorRow';
 
+import { Context, PARSE, EDITOR, COURSELIST } from '../context/provider';
 
 const CourseEditor = (props) => {
     const [course, setCourse] = React.useState({'name':'test','code':null})
@@ -16,22 +17,24 @@ const CourseEditor = (props) => {
     const [isRendered, setIsRendered] = React.useState(0);
     const [updated, setUpdated] = React.useState(0);
     
+    const [state, dispatch] = React.useContext(Context);
 
     React.useEffect(() => {
         let code, name, index, meetings;
-
-        if(props.selectedIndex === undefined || props.selectedIndex === -1){
+        let selectedIndex = state.editor.index;
+        if(selectedIndex === undefined || selectedIndex === -1){
             code = name = index = meetings = null;
         } else {
-            ({code, name} = props.courseList[props.selectedIndex].course);
-            ({index, meetings} = props.courseList[props.selectedIndex].index);
+            ({code, name} = state.courseList[selectedIndex].course);
+            ({index, meetings} = state.courseList[selectedIndex].index);
             setIndexList(meetings);
             setIsUpdate(1);
         }
         setCourse({'code': code, 'name': name});
         setIndexNum(index);
         setIsRendered(1);
-    }, [props.courseList,props.selectedIndex])
+    }, [state.courseList,state.editor.index]);
+
 
     
 
@@ -62,16 +65,19 @@ const CourseEditor = (props) => {
                     <Button 
                         variant="outlined"
                         onClick={()=>{
-                            props.parseCallback(() => (res) => {
-                                setUpdated(0);
+                            setUpdated(0);
+                            dispatch({type:PARSE.SET_CALLBACK, callback:((res) => {
+                                
                                 setCourse(res.courses[0].course);
+                                setIndexList([]);
                                 setIndexList(res.courses[0].index.meetings);
                                 setIndexNum(res.courses[0].index.index);
-                                props.parseDetails('');
+                                dispatch({type:PARSE.SET_TEXT, text:''});
                                 setUpdated(1);
-                            })
-                            props.parseDetails('Degree Audit > View Course timetable > Select all rows of a subject, copy and paste here');
-                            props.openParse();    
+                                //console.log(indexList)
+                            })})
+                            dispatch({type:PARSE.SET_TEXT, text:'Degree Audit > View Course timetable > Select all rows of a subject, copy and paste here'});
+                            dispatch({type:PARSE.OPEN_WINDOW});  
                         }}
                     >
                         Import Rows From Degree Audit
@@ -124,7 +130,7 @@ const CourseEditor = (props) => {
                 </Box>
                 <Box sx={{mt:2, p:1}}>
                             {indexList.map((element, key) => {
-                                return(<Box key={key}>
+                                return(<Box key={(updated+key)}>
                                     <Divider light />
                                     <CourseEditorRow key={key} index={key} {...element} update={updateIndexList} delete={deleteIndexList}/>
   
@@ -148,12 +154,11 @@ const CourseEditor = (props) => {
                         new_var.course = {'id': -1, 'code': course.code, 'name': course.name}
                         new_var.index = {'index': indexNum, 'meetings': indexList}
                         if(isUpdate){
-                            props.update(props.selectedIndex,new_var)
+                            dispatch({type: COURSELIST.UPDATE, index: state.editor.index, course:new_var});
                         } else {
-                            props.push(new_var);
-                            
+                            dispatch({type: COURSELIST.PUSH, course: new_var});
                         }
-                        props.close();
+                        dispatch({type: EDITOR.CLOSE_WINDOW})
                     }}
                 >
                     {isUpdate?'Update':'Create'}

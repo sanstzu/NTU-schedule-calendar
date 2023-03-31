@@ -10,9 +10,13 @@ import InfoIcon from '@mui/icons-material/Info';
 import TextField from '@mui/material/TextField';
 import ScheduleParser from '../utils/ScheduleParser';
 
+import { Context, PARSE } from '../context/provider';
+
 const TextParser = (props) => {
     const [isRendered, setIsRendered] = React.useState(0);
     const [text, setText] = React.useState(0);
+    const [state, dispatch] = React.useContext(Context);
+    
     React.useEffect(() => {
         setIsRendered(0);
         setIsRendered(1);
@@ -42,9 +46,8 @@ const TextParser = (props) => {
                             onClick={() => {
 
                                 let res = ScheduleParser(text);
-                                props.close();
-
-                                props.parseCallback(res);
+                                dispatch({type: PARSE.CLOSE_WINDOW })
+                                state.parse.callback(res);
                             }}
                         >
                             Parse Text
@@ -53,7 +56,7 @@ const TextParser = (props) => {
                 <Box sx={{ display:'flex', flexDirection: 'row', alignItems:'center', justifyContent:'start' }}>
                     <InfoIcon sx={{mr:0.5, position: 'relative', top: '1px'}} fontSize='small' color='action' />
                     <Typography sx={{color: grey[600], fontSize:14}}>
-                        {props.parseDetails}
+                        {state.parse.text}
                     </Typography>
                 </Box>
         </Box>
