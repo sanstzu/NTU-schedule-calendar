@@ -5,6 +5,8 @@ I remembered the days where I have to suffer by manually inputting the course sc
 - iCalendar Generator: [ics](https://github.com/adamgibbons/ics)
 - Webscrapping: [BeautifulSoup 4](https://www.crummy.com/software/BeautifulSoup/) (not pushed)
 
+[__Link to Website__](https://ntucal.vercel.app)
+
 ## How to use it
 There are two ways to input your course schedule, as well as the ability to modify it.
 
