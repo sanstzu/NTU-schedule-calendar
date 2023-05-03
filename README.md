@@ -1,4 +1,4 @@
-# Introduction
+# NTU Schedule Calendar Generator
 I remembered the days where I have to suffer by manually inputting the course schedule into my calendar app. To save up few hours of my life (and yours), I created this repository. This website in this repository allows the user to export their course schedule into an iCalendar file (which can be imported into most calendar applications).
 
 - Front-end: [React](https://reactjs.org/), [MaterialUI](https://mui.com/)
