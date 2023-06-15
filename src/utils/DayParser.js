@@ -6,7 +6,7 @@ def dayClassifier(text):
 
 const DayParser = (raw) => {
     const dayList = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-    return dayList.indexOf(raw)!=-1?dayList.indexOf(raw):null;
+    return dayList.indexOf(raw)!==-1?dayList.indexOf(raw):null;
 }
 
 export default DayParser;

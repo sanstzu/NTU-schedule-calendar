@@ -1,7 +1,5 @@
 import * as React from 'react'
 import { Typography, Box } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/system';
-import CssBaseline from '@mui/material/CssBaseline';
 
 import ListTable from '../components/ListTable';
 import SimpleDialog from '../components/SimpleDialog';
@@ -45,7 +43,6 @@ function Main(){
     const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
     //const [courseList, setCourseList] = React.useState([])
     //const [customAddWindow, setCustomAddWindow] = React.useState(false)
-    const [parseWindow, setParseWindow] = React.useState(false)
     const [parseCallback, setParseCallback] = React.useState();
     const [parseDetailsText, setParseDetailsText] = React.useState('');
     //const [editorIndex, setEditorIndex] = React.useState(-1);

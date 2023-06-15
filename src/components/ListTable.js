@@ -152,10 +152,7 @@ const ListTable = (props) => {
               <TableCell colSpan={2}>
                 <Autocomplete
                   filterOptions={(options) => {
-                    options.unshift({
-                      id: -1,
-                    });
-                    return options;
+                    return [{id: -1}, ...options];
                   }}
                   onInputChange={(e, value) => {
                     setSearchResult(null);

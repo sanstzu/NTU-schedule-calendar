@@ -23,9 +23,9 @@ const WeekParser = (raw) => {
     for(let j=0; j<ranges.length; j++){
         let i = ranges[j];
         let interval = i.split('-');
-        if(interval.length == 1){
+        if(interval.length === 1){
             weeks.push(parseInt(interval[0]));
-        } else if(interval.length == 2){
+        } else if(interval.length === 2){
             for(let j = parseInt(interval[0]); j<=parseInt(interval[1]); j++){
                 weeks.push(parseInt(j))
             }

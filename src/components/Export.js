@@ -13,7 +13,7 @@ import {start_date} from "../const/const"
 
 import { blue, grey } from '@mui/material/colors';
 
-import { example } from '../const/course_data';
+import  example  from '../const/example.json';
 
 import { default_format } from '../const/const';
 
