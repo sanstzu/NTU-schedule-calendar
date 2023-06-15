@@ -48,13 +48,18 @@ const ListTable = (props) => {
         params: { searchTerm: searchValue },
       });
 
-     sleep(5e2)
-     .then()
+    sleep(5e2)
       .then(() => {
-        if(!subscribed) return;
-      else return fetchResult()
-    })
-      .then((result) => result.data)
+        if (!subscribed) return;
+        else return fetchResult();
+      })
+      .then((result) => {
+        if (result) {
+          return result.data;
+        } else {
+          return null;
+        }
+      })
       .then((data) => {
         if (!subscribed) return;
         setSearchResult(data);
@@ -88,9 +93,9 @@ const ListTable = (props) => {
 
   const addSelection = (value) => {
     const checkedRowSelection = [];
-    rowSelection.forEach((element)=> {
-        if(element !== value) checkedRowSelection.push(element);
-    })
+    rowSelection.forEach((element) => {
+      if (element !== value) checkedRowSelection.push(element);
+    });
     setRowSelection(checkedRowSelection.concat(value));
   };
 
@@ -148,8 +153,8 @@ const ListTable = (props) => {
                 <Autocomplete
                   filterOptions={(options) => {
                     options.unshift({
-                        id: -1,
-                    })
+                      id: -1,
+                    });
                     return options;
                   }}
                   onInputChange={(e, value) => {
@@ -205,9 +210,7 @@ const ListTable = (props) => {
                 <Autocomplete
                   fullWidth={true}
                   options={
-                    selectedCourse === null
-                      ? []
-                      : selectedCourse.indexes
+                    selectedCourse === null ? [] : selectedCourse.indexes
                   }
                   disabled={selectedCourse === null}
                   key={selectedCourse === null ? "" : selectedCourse.id}
