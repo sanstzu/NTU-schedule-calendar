@@ -53,4 +53,4 @@ If you have any suggestions or input, feel free to contact me through [my email]
 # Changelogs
 - (03/20): Fixed prop drilling with the use of `useContext` and `useReducer`
 - (03/07): Initial Commit
-- (06/16): Updated Calendar for AY 23/24 Semester 1
+- (06/16): Updated Calendar for AY 23/24 Semester 1 and Implemented Backend
