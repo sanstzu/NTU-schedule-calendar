@@ -1,14 +1,15 @@
 # NTU Schedule Calendar Generator
+
 I remembered the days where I have to suffer by manually inputting the course schedule into my calendar app. To save up few hours of my life (and yours), I created this repository. This website in this repository allows the user to export their course schedule into an iCalendar file (which can be imported into most calendar applications).
 
 - Frontend: [React](https://reactjs.org/), [MaterialUI](https://mui.com/)
 - Backend: [Express](https://expressjs.com/), [BeautifulSoup 4](https://www.crummy.com/software/BeautifulSoup/) (Webscrapping)
 - iCalendar Generator: [ics](https://github.com/adamgibbons/ics)
 
-
-[__Link to Website__](https://ntucal.vercel.app)
+[**Link to Website**](https://ntucal.vercel.app)
 
 ## How to use it
+
 There are two ways to input your course schedule, as well as the ability to modify it.
 
 ### Manual Input
@@ -29,13 +30,11 @@ or you can import from your Course Timetable by copying the row(s) of the subjec
 
 <img src="https://user-images.githubusercontent.com/26087840/223493991-57d04138-dcff-42ce-9c6c-43a0683f295f.png" width="720">
 
-
 ### Quick Input
 
 Simply select everything (Ctrl+A or cmd+A) from your timetable, paste into the 'PASTE SCHEDULE', and voila! All ready in a single click.
 
 <img src="https://user-images.githubusercontent.com/26087840/223489475-afbf28eb-4fdd-4053-ad1c-09e8b8c0be5c.png" width="480">
-
 
 ### Text formatting
 
@@ -43,15 +42,15 @@ Dislike the default format of the calendar title? You can create your own with t
 
 <img src="https://user-images.githubusercontent.com/26087840/223490009-e047089d-5825-4704-80d2-3c679b1058c3.png" width="480">
 
-
-
 # Suggestions
+
 If you have any suggestions or input, feel free to contact me through [my email](mailto:claytonfernalo@gmail.com).&nbsp;
 
 <img src="https://media.tenor.com/591bCuq_tyMAAAAC/bocchi-bocchitherock.gif" width="360">
 
 # Changelogs
+
+- (08/22): Fixed error for schedules after Recess Week
 - (06/16): Updated Calendar for AY 23/24 Semester 1 and Implemented Backend
 - (03/20): Fixed prop drilling with the use of `useContext` and `useReducer`
 - (03/07): Initial Commit
-
