@@ -16,7 +16,7 @@ const Footer = () => {
                     color='primary'
                     clickable/>
             <Typography sx={{ml:1}} color={grey[400]}>
-                (last updated on August 22, 2023)
+                (last updated on December 25, 2023)
             </Typography>
         </Box>
     )
