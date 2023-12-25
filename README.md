@@ -50,6 +50,7 @@ If you have any suggestions or input, feel free to contact me through [my email]
 
 # Changelogs
 
+- (12/25): Updated Calendar for AY 23/24 Semester 2
 - (08/22): Fixed error for schedules after Recess Week
 - (06/16): Updated Calendar for AY 23/24 Semester 1 and Implemented Backend
 - (03/20): Fixed prop drilling with the use of `useContext` and `useReducer`
