@@ -44,6 +44,7 @@ const icsAPI = (
   //startDate = date object of monday of the first week
   let events = [];
   let start_date = new Date(startDate.toDateString()); //removes time component
+  start_date.setMinutes(start_date.getMinutes() + start_date.getTimezoneOffset() + 8 * 60);
 
   for (let index = 0; index < courseList.length; index++) {
     let course = courseList[index];
