@@ -1,4 +1,4 @@
-> Note from (1/18/24): Thank you for using my very first project for your schedule 🤩, but unfortunately, there  won't be any maintenance or update for future class schedules 🥺. But, I would like to promote an alternative and better site [NTUMods 📅](https://ntumods.org) (I am one of the developers 😊) that has more features including the one I made on this site.
+> Archived (1/18/24): Thank you for using my very first project for your schedule 🤩, but unfortunately, there  won't be any maintenance or update for future class schedules 🥺. But, I would like to promote an alternative and better site [NTUMods 📅](https://ntumods.org) (I am one of the developers 😊) that has more features including the ones that existed on this site.
 
 # NTU Schedule Calendar Generator
 
